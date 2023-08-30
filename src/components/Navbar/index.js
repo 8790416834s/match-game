@@ -4,7 +4,7 @@ const Navbar = props => {
   const {score, count} = props
 
   return (
-    <nav className="nav-container">
+    <li className="nav-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/match-game-website-logo.png"
         alt="website logo"
@@ -24,7 +24,7 @@ const Navbar = props => {
           <p>{count} sec</p>
         </div>
       </div>
-    </nav>
+    </li>
   )
 }
 export default Navbar

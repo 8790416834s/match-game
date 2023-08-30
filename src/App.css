@@ -74,6 +74,8 @@ body {
   display: inline-block;
   flex-direction: row;
   margin-top: 150px;
+  cursor: pointer;
+  outline: none;
 }
 .button {
   position: relative;
@@ -85,6 +87,4 @@ body {
   padding-bottom: 10px;
   background-color: transparent;
   pointer-events: none;
-  cursor: pointer;
-  outline: none;
 }

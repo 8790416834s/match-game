@@ -258,7 +258,7 @@ class App extends Component {
     score: 0,
     count: 60,
     endCard: false,
-    playAgain: false,
+    playAgain: true,
   }
 
   componentDidMount() {
@@ -299,18 +299,23 @@ class App extends Component {
     this.setState({testImage: randomImage})
   }
 
+  playAgainClick = () => {
+    console.log('clicked')
+    this.setState({
+      score: 0,
+      count: 60,
+      playAgain: true,
+    })
+  }
+
   clickThumbnail = imageUrl => {
     const {testImage} = this.state
     if (imageUrl === testImage.imageUrl) {
       this.changeImage()
       this.setState(prevState => ({score: prevState.score + 1}))
     } else {
-      this.setState({endCard: true})
+      this.setState({endCard: true, playAgain: false})
     }
-  }
-
-  playAgainClick = () => {
-    this.setState({score: 0, count: 60, playAgain: true})
   }
 
   render() {
@@ -326,7 +331,9 @@ class App extends Component {
     this.clearTimer()
     return (
       <div className="main-container">
-        <Navbar score={score} count={count} />
+        <ul>
+          <Navbar score={score} count={count} />
+        </ul>
         {count === 0 || endCard === true ? (
           <div className="game-over-container">
             <div className="trophy-container">
@@ -355,6 +362,9 @@ class App extends Component {
             </div>
           </div>
         ) : (
+          ''
+        )}
+        {playAgain === true ? (
           <div>
             <div>
               <img src={testImage.imageUrl} alt="match" className="image" />
@@ -379,6 +389,8 @@ class App extends Component {
               ))}
             </ul>
           </div>
+        ) : (
+          ''
         )}
       </div>
     )
